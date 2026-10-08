@@ -51,7 +51,7 @@ async def connect_and_track():
     while True:
         try:
             async with websockets.connect(WEBSOCKET_URL, subprotocols=["echo-protocol"]) as ws:
-                logging.info(f"✅ Connected to WebSocket: {WEBSOCKET_URL}")
+                logging.info(f"✅ Connected to Birdeye WebSocket (chain={CHAIN})")
 
                 # Subscribe to new tokens
                 subscribe_message = {"type": "SUBSCRIBE_TOKEN_NEW_LISTING"}
@@ -170,7 +170,7 @@ async def process_transaction(transaction_data):
         try:
             json_data = json.dumps(transaction_data, indent=2, default=str)  # Insuring against incorrect types
         except Exception as e:
-            logging.error(f"❌ JSON serialization error: {e}, data: {transaction_data}”)
+            logging.error(f"❌ JSON serialization error: {e}, data: {transaction_data}")
             return
 
         # ✅ Upload to Google Cloud Storage
