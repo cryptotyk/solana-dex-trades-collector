@@ -9,7 +9,7 @@ flowchart LR
     A[Birdeye WebSocket<br/>TOKEN_NEW_LISTING] --> B[birdeye_tracker.py<br/>in-memory token set]
     B -- SUBSCRIBE_TXS<br/>batches of 100 tokens --> C[Birdeye WebSocket<br/>TXS_DATA]
     C --> B
-    B --> D[(GCS bucket<br/>transactions/&lt;token&gt;/&lt;ts&gt;.json)]
+    B --> D[("GCS bucket<br/>transactions/{token}/{ts}.json")]
 ```
 
 | Stage | What happens in the code |
